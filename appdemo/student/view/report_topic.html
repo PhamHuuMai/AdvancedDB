@@ -1,0 +1,112 @@
+<!--form report -->
+<div ng-controller="report" ng-init="load()">
+    <button type="button" class="btn btn-default" ng-click="load()">Load</button>
+    <!-- Thông tin de tai -->
+    <div>
+        <h3 style="margin-bottom: 20px">
+            <strong> Thông tin đề tài </strong>
+        </h3>
+        <table class="table">
+            <tr>
+                <td style="width: 167px">
+                    <strong> Mã đề tài : </strong>
+                </td>
+                <td> {{topicRegisted.IdDeTai}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong> Tên đề tài :</strong>
+                </td>
+                <td> {{topicRegisted.TenDT}} </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong> Giáo viên hướng dẫn :</strong>
+                </td>
+                <td> {{topicRegisted.TenGV}} </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong> Mô tả :</strong>
+                </td>
+                <td> {{topicRegisted.MoTa}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong> Nội dung :</strong>
+                </td>
+                <td> {{topicRegisted.NoiDung}} </td>
+            </tr>
+        </table>
+    </div>
+    <!--  -->
+    <h3>Báo cáo </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> Lần báo cáo </th>
+                <th> Ngày báo cáo </th>
+                <th> Nội dung </th>
+                <th> File </th>
+                <th> Kết quả </th>
+                <th> Trạng thái </th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="x in reports">
+            <tr>
+                <td>
+                    <input type="checkbox" ng-click="selectReport($index)">
+                </td>
+                <td> {{x.LanBaoCao}}</td>
+                <td> {{x.NgayBaoCao}} </td>
+                <td> {{x.NoiDung}} </td>
+                <td>
+                    <a href="{{File}}">{{x.File}}</a>
+                </td>
+                <td> {{x.KetQua}} </td>
+                <td> {{x.TrangThai}} </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="add()">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Nội dung :</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" ng-model="content" placeholder=" Nội dung báo cáo" style="height: 350px"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">File báo cáo :</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="url">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer btn-group">
+                    <div ng-if="flag==1">
+                        <button type="button" class="btn btn-default" ng-click="submitCreater()">Ghi nhận</button>
+                    </div>
+                    <div ng-if="flag==2">
+                        <button type="button" class="btn btn-default" ng-click="remove()">Delete</button>
+                        <button type="button" class="btn btn-default" ng-click="save()">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

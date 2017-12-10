@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <!-- anggular 1xx -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <!-- storage -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="login">
+    <div class="container" ng-controller="login" style="width: 600px">
+        <div class="jumbotron" style="margin-top: 150px;">
+            <div class="row" style="margin-top: 5px">
+                <div class="col-xm-7">
+                    <h2> Đại học bôn ba </h2>
+                    <h3> <strong> Đăng nhập </strong> </h3>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5px">
+                <div class="col-xm-3">
+                    <label for="pwd"> Username :</label>
+                </div>
+                <div class="col-xm-4">
+                    <input type="text" class="form-control" id="usr" ng-model="username">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5px">
+                <div class="col-xm-3">
+                    <label for="pwd"> Password :</label>
+                </div>
+                <div class="col-xm-4">
+                    <input type="password" class="form-control" id="usr" ng-model="password">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5px">
+                <div class="col-xm-5">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal" ng-click="login()"> Login </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        <div class="alert alert-{{alert}}">
+                            <strong>{{alertTitle}}</strong> {{alertMessage}}
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

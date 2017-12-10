@@ -1,0 +1,73 @@
+<!--form dk -->
+<div ng-controller="myCtrl" ng-init="load()">
+    <button type="button" class="btn btn-default" ng-click="load()">Load</button>
+    <div>
+        <h4>Sinh viên    : {{StudentInfor.Ten}}</h4>
+        <h4>Mã sinh viên : {{StudentInfor.Id}}</h4>
+        <h4>Chuyên ngành : {{StudentInfor.TenChuyenNganh}}</h4>
+        <h4>Khoa         : {{StudentInfor.TenKhoa}}</h4>
+        <h4>Lớp          : {{StudentInfor.TenLop}}</h4>
+    </div>
+    <div>
+        <div class="table-responsive">
+            <h6> Năm học 2017 - 2018 </h6>
+            <h4> Danh sách đề tài </h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã đề tài </th>
+                        <th> Tên đề tài </th>
+                        <th> Nội dung </th>
+                        <th> Mô tả </th>
+                        <th> Độ khó </th>
+                        <th> Giáo viên hd </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in selector">
+                        <td>
+                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}" ng-click="handleTableUp($index,x.IdDeTai)">
+                        </td>
+                        <td> {{x.IdDeTai}}</td>
+                        <td> {{x.TenDT}} </td>
+                        <td> {{x.NoiDung}} </td>
+                        <td> {{x.MoTa}}</td>
+                        <td> {{x.DoKho}}</td>
+                        <td> {{x.TenGV}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3>Danh sách đã chọn </h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã đề tài </th>
+                        <th> Tên đề tài </th>
+                        <th> Nội dung </th>
+                        <th> Mô tả </th>
+                        <th> Độ khó </th>
+                        <th> Giáo viên hd </th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="x in selected">
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}" ng-click="handleTableDown($index,x.IdDeTai)">
+                        </td>
+                        <td> {{x.IdDeTai}}</td>
+                        <td> {{x.TenDT}} </td>
+                        <td> {{x.NoiDung}} </td>
+                        <td> {{x.MoTa}}</td>
+                        <td> {{x.DoKho}}</td>
+                        <td> {{x.TenGV}} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn" ng-click="submit()">Ghi nhận</button>
+        </div>
+    </div>
+</div>

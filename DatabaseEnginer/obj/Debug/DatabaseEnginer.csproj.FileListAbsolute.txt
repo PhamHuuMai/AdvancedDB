@@ -1,0 +1,10 @@
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\DatabaseEnginer.dll.config
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\DatabaseEnginer.dll
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\DatabaseEnginer.pdb
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\EntityFramework.dll
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\EntityFramework.SqlServer.dll
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\EntityFramework.xml
+F:\CSDLNC\Service\DatabaseEnginer\bin\Debug\EntityFramework.SqlServer.xml
+F:\CSDLNC\Service\DatabaseEnginer\obj\Debug\DatabaseEnginer.csprojResolveAssemblyReference.cache
+F:\CSDLNC\Service\DatabaseEnginer\obj\Debug\DatabaseEnginer.dll
+F:\CSDLNC\Service\DatabaseEnginer\obj\Debug\DatabaseEnginer.pdb

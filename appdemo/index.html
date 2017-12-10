@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+<body ng-app="mainapp">
+    <div ng-view></div>
+    <script>
+        var mainApp = angular.module("mainapp", ["ngRoute"]);
+        mainApp.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    resolve: {
+                        message: route()
+                    },
+                })
+                .otherwise({
+                    resolve: {
+                        message: route()
+                    }
+                });
+        });
+        function route() {
+            window.location.href = "/login/index.htm";
+        }
+    </script>
+</body>
+
+</html>
