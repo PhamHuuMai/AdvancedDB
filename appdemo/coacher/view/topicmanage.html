@@ -1,0 +1,91 @@
+<div ng-controller="managetopic">
+    <ul class="nav nav-tabs">
+        <li>
+            <a data-toggle="tab" ng-click="load(1)">Đề tài toàn khoa</a>
+        </li>
+        <li>
+            <a data-toggle="tab" ng-click="load(2)">Đề tài của tôi</a>
+        </li>
+    </ul>
+    <!--  content tab  -->
+    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã đề tài </th>
+                        <th> Tên đề tài </th>
+                        <th> Nội dung </th>
+                        <th> Mô tả </th>
+                        <th> Độ khó </th>
+                        <th> Giáo viên tạo </th>
+                        <th> Trạng thái </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in selector">
+                        <td>
+                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                        </td>
+                        <td>scs </td>
+                        <td>cxcxczcc </td>
+                        <td>zxczcca </td>
+                        <td>xzcasxcc </td>
+                        <td>acdscscc </td>
+                        <td>fwefsdc </td>
+                        <td>fwefsdc </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--  -->
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Tên đề tài :</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Tên đề tài">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">Nội dung :</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Nội dung đề tài ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">Mô tả :</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Nhập mô tả link file đính kèm ..bla..bla...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">Độ khó :</label>
+                            <div class="col-sm-9">
+                                <input type="number" ng-model="file" class="form-control" id="pwd" placeholder="Lever">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer btn-group">
+                    <button type="button" class="btn btn-default" ng-click="submitCreater()">Ghi nhận</button>
+                    <button type="button" class="btn btn-default" ng-click="submitCreater()">Xóa đề tài</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

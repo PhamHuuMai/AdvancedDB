@@ -147,5 +147,15 @@ namespace API.Service.ServiceImpl
                 qldt.SaveChanges();  
             }
         }
+
+        public List<TopicDTO> getAllTopicByFaculty(int idKhoa)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TopicDTO> getAllTopicByCoacher(int idGv)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

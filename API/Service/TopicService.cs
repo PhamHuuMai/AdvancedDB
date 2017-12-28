@@ -10,6 +10,8 @@ namespace API.Service.Service
     interface TopicService
     {
         List<TopicDTO> getClassTopicCurent(int idCn);
+        List<TopicDTO> getAllTopicByFaculty(int idKhoa);
+        List<TopicDTO> getAllTopicByCoacher(int idGv);
         TopicDTO getClassTopicCurentSv(int idsv);
         void registerTopic(int idSv, int idLopHd);
         List<ReportDTO> getReport(int idDk);

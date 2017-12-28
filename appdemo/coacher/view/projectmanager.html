@@ -1,0 +1,81 @@
+<div ng-controller="manageproject">
+    <ul class="nav nav-tabs">
+        <li>
+            <a data-toggle="tab" ng-click="tab=true">Lịch sử </a>
+        </li>
+        <li>
+            <a data-toggle="tab" ng-click="tab=true">Các sinh viên hiện tại</a>
+        </li>
+    </ul>
+    <!--  content tab  -->
+    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+        <div ng-show="tab">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã SV </th>
+                        <th> Tên SV </th>
+                        <th> Mã đề tài </th>
+                        <th> Tên đề tài </th>
+                        <th> Điểm </th>
+                        <th> Trạng thái </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in selector">
+                        <td>
+                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                        </td>
+                        <td>scs </td>
+                        <td>cxcxczcc </td>
+                        <td>zxczcca </td>
+                        <td>xzcasxcc </td>
+                        <td>acdscscc </td>
+                        <td>fwefsdc </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- thông tin sinh vien -->
+
+    <!-- bao cao -->
+    <h3>Báo cáo </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> Lần báo cáo </th>
+                <th> Ngày báo cáo </th>
+                <th> Nội dung </th>
+                <th> File </th>
+                <th> Kết quả </th>
+                <th> Trạng thái </th>
+                <th> # </th>
+            </tr>
+        </thead>
+        <!-- <tbody ng-repeat="x in reports"> -->
+        <tbody >
+            <tr>
+                <td>
+                    <input type="checkbox" ng-click="selectReport($index)">
+                </td>
+                <td> {{x.LanBaoCao}}</td>
+                <td> {{x.NgayBaoCao}} </td>
+                <td> {{x.NoiDung}} </td>
+                <td>
+                    <a href="{{File}}">{{x.File}}</a>
+                </td>
+                <td>
+                    <input class="form-control" type="number" ng-model="" value="{{x.KetQua}}" style="width: 50px;">
+                </td>
+                <td> {{x.TrangThai}} </td>
+                <td>
+                    <button class="button" ng-click=""> Save </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

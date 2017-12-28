@@ -13,6 +13,7 @@ namespace API.DTO
         private String moTa;
         private String noiDung;
         private int doKho;
+        private String trangThai;
         private int idGV;
         private String tenGV;
 
@@ -117,6 +118,19 @@ namespace API.DTO
             set
             {
                 id = value;
+            }
+        }
+
+        public string TrangThai
+        {
+            get
+            {
+                return trangThai;
+            }
+
+            set
+            {
+                trangThai = value;
             }
         }
     }
