@@ -162,6 +162,7 @@
     <Compile Include="DTO\ReportDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\StudentInforDTO.cs" />
+    <Compile Include="DTO\TopicRegisterDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,7 +180,9 @@
     <Compile Include="ResponseDTO\ReportTopicResponse.cs" />
     <Compile Include="ResponseDTO\Response.cs" />
     <Compile Include="Service\CoacherService.cs" />
+    <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\ServiceImpl\CoacherServiceImpl.cs" />
+    <Compile Include="Service\ServiceImpl\ReportServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\SessionServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\StudentServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\TopicServiceImpl.cs" />

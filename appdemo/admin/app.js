@@ -20,7 +20,7 @@ app.config(function ($routeProvider) {
 });
 app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, $http) {
     $scope.faculties = [{ MaKhoa: "aa", TenKhoa: "aaaaa" }, { MaKhoa: "aa", TenKhoa: "aaaaa" }, { MaKhoa: "aa", TenKhoa: "aaaaa" }];
-    //$http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
+    $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
     // $scope.tab = true;
     $scope.topics = [{
         IdDeTai: "1",
@@ -46,14 +46,14 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
     }
 
     $scope.tab = function (tab) {
-        //  $scope.topics=[];
+        $scope.topics=[];
         if (tab == 1) {
             $scope.me = true;
-            // $scope.topics=data.AllTopics;
+            $scope.topics=data.AllTopics;
         }
         if (tab == 2) {
             $scope.me = false;
-            // $scope.topics=data.TopicsOfCoacher;
+            $scope.topics=data.TopicsOfCoacher;
         }
     };
 
@@ -63,13 +63,12 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
     };
 
     $scope.submit = function () {
-
-        //   $scope.topicSelected = Object.assign({}, $scope.topics[index]);
+        $scope.topicSelected = Object.assign({}, $scope.topics[index]);
         $("#myModal").modal("hide");
     };
     $scope.delete = function () {
 
-        //   $scope.topicSelected = Object.assign({}, $scope.topics[index]);
+        $scope.topicSelected = Object.assign({}, $scope.topics[index]);
         $("#myModal").modal("hide");
     };
 
