@@ -19,7 +19,7 @@ app.config(function ($routeProvider) {
         });
 });
 app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, $http) {
-
+    $scope.faculties = [{ MaKhoa: "aa", TenKhoa: "aaaaa" }, { MaKhoa: "aa", TenKhoa: "aaaaa" }, { MaKhoa: "aa", TenKhoa: "aaaaa" }];
     //$http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
     // $scope.tab = true;
     $scope.topics = [{
@@ -84,8 +84,7 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
 
 });
 app.controller("manageproject", function ($scope, $localStorage, $sessionStorage, $http) {
-    
-
+    $scope.add=false;
     // login 
     $scope.login = function () {
         $http.post("http://localhost:50132/login", {}

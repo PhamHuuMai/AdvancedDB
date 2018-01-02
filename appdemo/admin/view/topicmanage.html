@@ -1,0 +1,48 @@
+<div ng-controller="managetopic" ng-init="">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-danger">Lọc theo :</li>
+        <li class="list-group-item list-group-item-info">
+            <label>Khoa:</label>
+            <span>
+                <select class="form-control" style="width: 300px">
+                    <option ng-repeat="x in faculties" value="{{x.MaKhoa}}">{{x.TenKhoa}}</option>
+                </select>
+            </span>
+        </li>
+    </ul>
+    <!--  content tab  -->
+    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã đề tài </th>
+                        <th> Tên đề tài </th>
+                        <th> Nội dung </th>
+                        <th> Mô tả </th>
+                        <th> Độ khó </th>
+                        <th> Giáo viên tạo </th>
+                        <th> Trạng thái </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in topics">
+                        <td>
+                            <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
+                        </td>
+                        <td> {{x.IdDeTai}}</td>
+                        <td> {{x.TenDT}} </td>
+                        <td> {{x.NoiDung}} </td>
+                        <td> {{x.MoTa}}</td>
+                        <td> {{x.DoKho}}</td>
+                        <td> {{x.TenGV}} </td>
+                        <td> {{x.TrangThai}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+   
+</div>

@@ -1,0 +1,124 @@
+<div ng-controller="manageproject">
+    <ul class="nav nav-tabs">
+        <li>
+            <a data-toggle="tab" ng-click="show=fasle">Lịch sử </a>
+        </li>
+        <li class="active">
+            <a data-toggle="tab" ng-click="show=true">Các hội đồng bảo vệ hiện tại </a>
+        </li>
+    </ul>
+    <!--  content tab  -->
+    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th> Mã HD </th>
+                    <th> Tên HD </th>
+                    <th> Khoa </th>
+                    <th> Ngày thành lập </th>
+                    <th> Năm học </th>
+                    <th> Trạng thái </th>
+                    <th> # </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input ng-show="show" type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                    </td>
+                    <td>scs </td>
+                    <td>cxcxczcc </td>
+                    <td>zxczcca </td>
+                    <td>xzcasxcc </td>
+                    <td>acdscscc </td>
+                    <td>fwefsdc </td>
+                    <td>
+                        <a ng-click="" data-toggle="modal" data-target="#myModal">Chi tiết</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" data-toggle="modal" data-target="#myModal" style="margin: 2px " class="btn btn-default">Tạo HD</button>
+    <!-- HD detail -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Chi tiết HD bảo vệ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-12" style="background-color: azure">
+                        <label></label>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th> Mã GV </th>
+                                    <th> Tên GV </th>
+                                    <th> Vị trí </th>
+                                    <th> # </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
+                                    </td>
+                                    <td> {{x.IdDeTai}}</td>
+                                    <td> {{x.TenDT}} </td>
+                                    <td> {{x.NoiDung}} </td>
+                                    <td>
+                                        <a>Xóa</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+                    <button type="button" style="margin: 2px " class="btn btn-default" ng-click="add=!add">Thêm</button>
+                    <div class="col-sm-12" style="background-color: silver" ng-show="add">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th> Mã GV </th>
+                                    <th> Tên GV </th>
+                                    <th> Học hàm</th>
+                                    <th> Học vị </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-click="add=false">
+                                    <td>
+                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
+                                    </td>
+                                    <td> {{x.IdDeTai}}</td>
+                                    <td> {{x.TenDT}} </td>
+                                    <td> {{x.NoiDung}} </td>
+                                    <td> {{x.MoTa}}</td>
+                                </tr>
+                                <tr ng-click="add=false">
+                                    <td>
+                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
+                                    </td>
+                                    <td> {{x.IdDeTai}}</td>
+                                    <td> {{x.TenDT}} </td>
+                                    <td> {{x.NoiDung}} </td>
+                                    <td> {{x.MoTa}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer btn-group">
+                    <button type="button" class="btn btn-default" ng-click="submit()">Ghi nhận</button>
+                    <button type="button" class="btn btn-default" ng-click="delete()">Xóa HĐ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

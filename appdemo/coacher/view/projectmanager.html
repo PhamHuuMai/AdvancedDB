@@ -1,10 +1,10 @@
 <div ng-controller="manageproject">
     <ul class="nav nav-tabs">
         <li>
-            <a data-toggle="tab" ng-click="tab=true">Lịch sử </a>
+            <a data-toggle="tab" ng-click="show=fasle ">Lịch sử </a>
         </li>
-        <li>
-            <a data-toggle="tab" ng-click="tab=true">Các sinh viên hiện tại</a>
+        <li class="active">
+            <a data-toggle="tab" ng-click="show=true">Các sinh viên hiện tại</a>
         </li>
     </ul>
     <!--  content tab  -->
@@ -25,7 +25,7 @@
                 <tbody>
                     <tr ng-repeat="x in selector">
                         <td>
-                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                            <input ng-show="show" type="checkbox" name="" id="" value="{{x.IdDeTai}}">
                         </td>
                         <td>scs </td>
                         <td>cxcxczcc </td>

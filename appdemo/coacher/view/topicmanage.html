@@ -1,10 +1,10 @@
-<div ng-controller="managetopic">
+<div ng-controller="managetopic" ng-init="">
     <ul class="nav nav-tabs">
         <li>
-            <a data-toggle="tab" ng-click="load(1)">Đề tài toàn khoa</a>
+            <a data-toggle="tab" ng-click="tab(1)">Đề tài toàn khoa</a>
         </li>
-        <li>
-            <a data-toggle="tab" ng-click="load(2)">Đề tài của tôi</a>
+        <li class="active">
+            <a data-toggle="tab" ng-click="tab(2)">Đề tài của tôi</a>
         </li>
     </ul>
     <!--  content tab  -->
@@ -24,24 +24,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="x in selector">
+                    <tr ng-repeat="x in topics">
                         <td>
-                            <input type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                            <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
                         </td>
-                        <td>scs </td>
-                        <td>cxcxczcc </td>
-                        <td>zxczcca </td>
-                        <td>xzcasxcc </td>
-                        <td>acdscscc </td>
-                        <td>fwefsdc </td>
-                        <td>fwefsdc </td>
+                        <td> {{x.IdDeTai}}</td>
+                        <td> {{x.TenDT}} </td>
+                        <td> {{x.NoiDung}} </td>
+                        <td> {{x.MoTa}}</td>
+                        <td> {{x.DoKho}}</td>
+                        <td> {{x.TenGV}} </td>
+                        <td> {{x.TrangThai}} </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <!--  -->
-    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-default btn-sm" ng-click="precreate()" data-toggle="modal" data-target="#myModal">
         <span class="glyphicon glyphicon-plus"></span>
     </button>
 
@@ -58,32 +58,34 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="email">Tên đề tài :</label>
                             <div class="col-sm-9">
-                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Tên đề tài">
+                                <input type="text" ng-model="topicSelected.TenDT" class="form-control" id="pwd" placeholder="Tên đề tài">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="pwd">Nội dung :</label>
                             <div class="col-sm-9">
-                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Nội dung đề tài ">
+                                <textarea ng-model="topicSelected.NoiDung" class="form-control" style="height: 180px ; width: 100%;" placeholder="Nội dung đề tài "></textarea>
+                                <!-- <input type="text" ng-model="topicSelected.NoiDung" class="form-control" id="pwd" placeholder="Nội dung đề tài "> -->
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="pwd">Mô tả :</label>
                             <div class="col-sm-9">
-                                <input type="text" ng-model="file" class="form-control" id="pwd" placeholder="Nhập mô tả link file đính kèm ..bla..bla...">
+                                <textarea ng-model="topicSelected.MoTa" class="form-control" style="height: 180px ; width: 100%;" placeholder="Nhập mô tả link file đính kèm ..bla..bla..."></textarea>
+                                <!-- <input type="text" ng-model="topicSelected.MoTa" class="form-control" id="pwd" placeholder="Nhập mô tả link file đính kèm ..bla..bla..."> -->
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="pwd">Độ khó :</label>
                             <div class="col-sm-9">
-                                <input type="number" ng-model="file" class="form-control" id="pwd" placeholder="Lever">
+                                <input type="number" ng-model="topicSelected.DoKho" class="form-control" id="pwd" placeholder="Lever">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer btn-group">
-                    <button type="button" class="btn btn-default" ng-click="submitCreater()">Ghi nhận</button>
-                    <button type="button" class="btn btn-default" ng-click="submitCreater()">Xóa đề tài</button>
+                    <button type="button" class="btn btn-default" ng-click="submit()">Ghi nhận</button>
+                    <button type="button" class="btn btn-default" ng-click="delete()">Xóa đề tài</button>
                 </div>
             </div>
         </div>
