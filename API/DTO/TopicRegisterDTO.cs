@@ -10,7 +10,7 @@ namespace API.DTO
         private int id;
         private int idDeTai;
         private String tenDeTai;
-        private String idSinhVien;
+        private int idSinhVien;
         private String tenSinhVien;
         private int lanDangKy;
         private DateTime ngayDangKy;
@@ -54,7 +54,7 @@ namespace API.DTO
             }
         }
 
-        public string IdSinhVien
+        public int IdSinhVien
         {
             get
             {

@@ -14,7 +14,21 @@ namespace API.Service.ServiceImpl
 
         public List<TopicRegisterDTO> getCurentTopicRegisterByGV(int idGv)
         {
-            throw new NotImplementedException();
+            var rs = (from svdk in qldt.SinhVienDangKyDeTais
+                      join sv in qldt.SinhViens on svdk.IDSinhVien equals sv.ID
+                      join dt in qldt.DeTais on svdk.IDDeTai equals dt.ID
+                      where svdk.DeTai.GiaoVien.ID == idGv && svdk.TrangThai == 1 && dt.Status == true
+                      select new TopicRegisterDTO()
+                      {
+                          Id = svdk.ID,
+                          IdDeTai = svdk.IDDeTai.Value,
+                          TenDeTai = dt.TenDeTai,
+                          IdSinhVien = svdk.IDSinhVien.Value,
+                          TenSinhVien = sv.HoTen,
+                          LanDangKy = svdk.LanDangKy.Value,
+                          NgayDangKy = svdk.NgayDangKy.Value
+                      });
+            return rs.ToList();
         }
 
         public int getFalcultuOfCoacher(int idGv)
@@ -30,7 +44,21 @@ namespace API.Service.ServiceImpl
 
         public List<TopicRegisterDTO> getOldTopicRegisterByGV(int idGv)
         {
-            throw new NotImplementedException();
+            var rs = (from svdk in qldt.SinhVienDangKyDeTais
+                      join sv in qldt.SinhViens on svdk.IDSinhVien equals sv.ID
+                      join dt in qldt.DeTais on svdk.IDDeTai equals dt.ID
+                      where svdk.DeTai.GiaoVien.ID == idGv && svdk.TrangThai == 0 && dt.Status == true
+                      select new TopicRegisterDTO()
+                      {
+                          Id = svdk.ID,
+                          IdDeTai = svdk.IDDeTai.Value,
+                          TenDeTai = dt.TenDeTai,
+                          IdSinhVien = svdk.IDSinhVien.Value,
+                          TenSinhVien = sv.HoTen,
+                          LanDangKy = svdk.LanDangKy.Value,
+                          NgayDangKy = svdk.NgayDangKy.Value
+                      });
+            return rs.ToList();
         }
     }
 }

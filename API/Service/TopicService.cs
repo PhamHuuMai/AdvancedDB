@@ -1,4 +1,5 @@
 ﻿using API.DTO;
+using DatabaseEnginer.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace API.Service.Service
         List<TopicDTO> getClassTopicCurent(int idCn);
         List<TopicDTO> getAllTopicByFaculty(int idKhoa);
         List<TopicDTO> getAllTopicByCoacher(int idGv);
+        void addTopic(DeTai detai);
+        void updateTopic(DeTai detai);
+        void deleteTopic(int id);
         TopicDTO getClassTopicCurentSv(int idsv);
         void registerTopic(int idSv, int idLopHd);
         List<ReportDTO> getReport(int idDk);

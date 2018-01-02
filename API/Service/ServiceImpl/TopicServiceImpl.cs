@@ -15,7 +15,7 @@ namespace API.Service.ServiceImpl
         public List<TopicDTO> getClassTopicCurent(int idCn)
         {
             var query = from dt in qldt.DeTais
-                        where (dt.IDChuyenNganh == idCn && dt.Status.Value)
+                        where (dt.IDChuyenNganh == idCn && dt.Status == true)
                         select new TopicDTO
                         {
                             DoKho = dt.DoKho.Value,
@@ -152,7 +152,7 @@ namespace API.Service.ServiceImpl
         {
             var rs = (from dt in qldt.DeTais
                       join gv in qldt.GiaoViens on dt.IDGVDeXuat equals gv.ID
-                      where dt.ChuyenNganh.IDKhoa == idKhoa
+                      where dt.ChuyenNganh.IDKhoa == idKhoa && dt.Status == true
                       select new TopicDTO()
                       {
                           IdDeTai = dt.ID,
@@ -171,7 +171,7 @@ namespace API.Service.ServiceImpl
         {
             var rs = (from dt in qldt.DeTais
                       join gv in qldt.GiaoViens on dt.IDGVDeXuat equals gv.ID
-                      where gv.ID == idGv
+                      where gv.ID == idGv && dt.Status == true
                       select new TopicDTO()
                       {
                           IdDeTai = dt.ID,
@@ -184,6 +184,45 @@ namespace API.Service.ServiceImpl
                           TenGV = gv.HoTen
                       });
             return rs.ToList();
+        }
+
+        public void addTopic(DeTai detai)
+        {
+            DeTai dt = new DeTai();
+            dt.TenDeTai = detai.TenDeTai;
+            dt.IDGVDeXuat = detai.IDGVDeXuat;
+            dt.IDChuyenNganh = detai.IDChuyenNganh;
+            dt.MoTa = detai.MoTa;
+            dt.NoiDung = detai.NoiDung;
+            dt.DoKho = detai.DoKho;
+            dt.NgayTao = DateTime.Now;
+            dt.TrangThai = "0";
+            qldt.DeTais.Add(dt);
+            qldt.SaveChanges();
+        }
+
+        public void updateTopic(DeTai detai)
+        {
+            DeTai dt = qldt.DeTais.Find(detai.ID);
+            if(dt != null)
+            {
+                dt.TenDeTai = detai.TenDeTai;
+                dt.IDGVDeXuat = detai.IDGVDeXuat;
+                dt.IDChuyenNganh = detai.IDChuyenNganh;
+                dt.MoTa = detai.MoTa;
+                dt.NoiDung = detai.NoiDung;
+                dt.DoKho = detai.DoKho;
+                dt.NgayTao = DateTime.Now;
+                dt.TrangThai = "0";
+            }
+            qldt.SaveChanges();
+        }
+
+        public void deleteTopic(int id)
+        {
+            DeTai dt = qldt.DeTais.Find(id);
+            dt.Status = false;
+            qldt.SaveChanges();
         }
     }
 }
