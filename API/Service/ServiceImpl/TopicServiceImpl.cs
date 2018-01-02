@@ -150,12 +150,40 @@ namespace API.Service.ServiceImpl
 
         public List<TopicDTO> getAllTopicByFaculty(int idKhoa)
         {
-            throw new NotImplementedException();
+            var rs = (from dt in qldt.DeTais
+                      join gv in qldt.GiaoViens on dt.IDGVDeXuat equals gv.ID
+                      where dt.ChuyenNganh.IDKhoa == idKhoa
+                      select new TopicDTO()
+                      {
+                          IdDeTai = dt.ID,
+                          TenDT = dt.TenDeTai,
+                          MoTa = dt.MoTa,
+                          NoiDung = dt.NoiDung,
+                          DoKho = dt.DoKho.Value,
+                          TrangThai = dt.TrangThai,
+                          IdGV = dt.IDGVDeXuat.Value,
+                          TenGV = gv.HoTen
+                      });
+            return rs.ToList();
         }
 
         public List<TopicDTO> getAllTopicByCoacher(int idGv)
         {
-            throw new NotImplementedException();
+            var rs = (from dt in qldt.DeTais
+                      join gv in qldt.GiaoViens on dt.IDGVDeXuat equals gv.ID
+                      where gv.ID == idGv
+                      select new TopicDTO()
+                      {
+                          IdDeTai = dt.ID,
+                          TenDT = dt.TenDeTai,
+                          MoTa = dt.MoTa,
+                          NoiDung = dt.NoiDung,
+                          DoKho = dt.DoKho.Value,
+                          TrangThai = dt.TrangThai,
+                          IdGV = dt.IDGVDeXuat.Value,
+                          TenGV = gv.HoTen
+                      });
+            return rs.ToList();
         }
     }
 }
