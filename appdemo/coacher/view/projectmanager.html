@@ -1,10 +1,10 @@
-<div ng-controller="manageproject">
+<div ng-controller="manageproject" ng-init="load()">
     <ul class="nav nav-tabs">
         <li>
-            <a data-toggle="tab" ng-click="show=fasle ">Lịch sử </a>
+            <a data-toggle="tab" ng-click="tab(1)">Lịch sử </a>
         </li>
         <li class="active">
-            <a data-toggle="tab" ng-click="show=true">Các sinh viên hiện tại</a>
+            <a data-toggle="tab" ng-click="tab(2)">Các sinh viên hiện tại</a>
         </li>
     </ul>
     <!--  content tab  -->
@@ -18,21 +18,21 @@
                         <th> Tên SV </th>
                         <th> Mã đề tài </th>
                         <th> Tên đề tài </th>
-                        <th> Điểm </th>
-                        <th> Trạng thái </th>
+                        <th> Lần DK </th>
+                        <th> Ngày DK </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="x in selector">
+                    <tr ng-repeat="x in trainers">
                         <td>
-                            <input ng-show="show" type="checkbox" name="" id="" value="{{x.IdDeTai}}">
+                            <input ng-show="show" type="checkbox" ng-click="loadReport($index)">
                         </td>
-                        <td>scs </td>
-                        <td>cxcxczcc </td>
-                        <td>zxczcca </td>
-                        <td>xzcasxcc </td>
-                        <td>acdscscc </td>
-                        <td>fwefsdc </td>
+                        <td>{{x.IdSinhVien}} </td>
+                        <td>{{x.TenSinhVien}} </td>
+                        <td>{{x.IdDeTai}} </td>
+                        <td>{{x.TenDeTai}} </td>
+                        <td>{{x.LanDangKy}} </td>
+                        <td>{{x.NgayDangKy}} </td>
                     </tr>
                 </tbody>
             </table>
@@ -56,10 +56,10 @@
             </tr>
         </thead>
         <!-- <tbody ng-repeat="x in reports"> -->
-        <tbody >
-            <tr>
+        <tbody>
+            <tr ng-repeat="x in reports">
                 <td>
-                    <input type="checkbox" ng-click="selectReport($index)">
+                    <input type="checkbox">
                 </td>
                 <td> {{x.LanBaoCao}}</td>
                 <td> {{x.NgayBaoCao}} </td>
@@ -68,11 +68,11 @@
                     <a href="{{File}}">{{x.File}}</a>
                 </td>
                 <td>
-                    <input class="form-control" type="number" ng-model="" value="{{x.KetQua}}" style="width: 50px;">
+                    <input class="form-control" type="text" ng-model="x.KetQua" style="width: 50px;">
                 </td>
                 <td> {{x.TrangThai}} </td>
                 <td>
-                    <button class="button" ng-click=""> Save </button>
+                    <button class="button" ng-click="save($index)"> Save </button>
                 </td>
             </tr>
         </tbody>

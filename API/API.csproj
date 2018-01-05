@@ -155,7 +155,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constant\Constant.cs" />
     <Compile Include="Constant\UserType.cs" />
-    <Compile Include="Controllers\CoacherController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ProjectManageController.cs" />
+    <Compile Include="Controllers\TopicManageController.cs" />
     <Compile Include="Controllers\LottezyController.cs" />
     <Compile Include="Controllers\RegisterTopicController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -170,10 +172,13 @@
     <Compile Include="Models\TokenData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestDTO\MarkPointRequest.cs" />
+    <Compile Include="RequestDTO\TopicRequest.cs" />
     <Compile Include="RequestDTO\UpdateReportRequest.cs" />
     <Compile Include="RequestDTO\CreateReportRequest.cs" />
     <Compile Include="RequestDTO\LoginRequest.cs" />
     <Compile Include="RequestDTO\RequestBase.cs" />
+    <Compile Include="ResponseDTO\GetProjectManage.cs" />
     <Compile Include="ResponseDTO\GetTopicCoacherResponse.cs" />
     <Compile Include="ResponseDTO\LoginResponse.cs" />
     <Compile Include="ResponseDTO\RegisterTopicResponse.cs" />

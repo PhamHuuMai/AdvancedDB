@@ -15,6 +15,7 @@ namespace API.Service.Service
         List<TopicDTO> getAllTopicByCoacher(int idGv);
         void addTopic(DeTai detai);
         void updateTopic(DeTai detai);
+        void changeStatusTopic(int idDetai,int status);
         void deleteTopic(int id);
         TopicDTO getClassTopicCurentSv(int idsv);
         void registerTopic(int idSv, int idLopHd);

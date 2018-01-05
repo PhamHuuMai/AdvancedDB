@@ -1,4 +1,4 @@
-<div ng-controller="managetopic" ng-init="">
+<div ng-controller="managetopic" ng-init="load()">
     <ul class="nav nav-tabs">
         <li>
             <a data-toggle="tab" ng-click="tab(1)">Đề tài toàn khoa</a>
@@ -8,7 +8,7 @@
         </li>
     </ul>
     <!--  content tab  -->
-    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+    <div style="min-height: 200px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
         <div>
             <table class="table">
                 <thead>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="modal-footer btn-group">
                     <button type="button" class="btn btn-default" ng-click="submit()">Ghi nhận</button>
-                    <button type="button" class="btn btn-default" ng-click="delete()">Xóa đề tài</button>
+                    <button ng-hide="btnDel" type="button" class="btn btn-default" ng-click="delete()">Xóa đề tài</button>
                 </div>
             </div>
         </div>

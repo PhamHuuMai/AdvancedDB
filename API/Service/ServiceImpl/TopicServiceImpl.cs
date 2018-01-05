@@ -197,6 +197,7 @@ namespace API.Service.ServiceImpl
             dt.DoKho = detai.DoKho;
             dt.NgayTao = DateTime.Now;
             dt.TrangThai = "0";
+            dt.Status = true;
             qldt.DeTais.Add(dt);
             qldt.SaveChanges();
         }
@@ -207,8 +208,8 @@ namespace API.Service.ServiceImpl
             if(dt != null)
             {
                 dt.TenDeTai = detai.TenDeTai;
-                dt.IDGVDeXuat = detai.IDGVDeXuat;
-                dt.IDChuyenNganh = detai.IDChuyenNganh;
+                //dt.IDGVDeXuat = detai.IDGVDeXuat;
+                //dt.IDChuyenNganh = detai.IDChuyenNganh;
                 dt.MoTa = detai.MoTa;
                 dt.NoiDung = detai.NoiDung;
                 dt.DoKho = detai.DoKho;
@@ -223,6 +224,11 @@ namespace API.Service.ServiceImpl
             DeTai dt = qldt.DeTais.Find(id);
             dt.Status = false;
             qldt.SaveChanges();
+        }
+
+        public void changeStatusTopic(int idDetai, int status)
+        {
+            throw new NotImplementedException();
         }
     }
 }
