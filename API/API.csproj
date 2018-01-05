@@ -185,8 +185,10 @@
     <Compile Include="ResponseDTO\ReportTopicResponse.cs" />
     <Compile Include="ResponseDTO\Response.cs" />
     <Compile Include="Service\CoacherService.cs" />
+    <Compile Include="Service\ProtectProjectService.cs" />
     <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\ServiceImpl\CoacherServiceImpl.cs" />
+    <Compile Include="Service\ServiceImpl\ProtectProjectImpl.cs" />
     <Compile Include="Service\ServiceImpl\ReportServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\SessionServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\StudentServiceImpl.cs" />
