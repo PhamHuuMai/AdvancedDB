@@ -67,7 +67,7 @@ namespace API.Controllers
                     MoTa = request.Mota,
                     NoiDung = request.NoiDung,
                     TenDeTai = request.TenDT,
-                    IDChuyenNganh = 2
+                    IDChuyenNganh = 1
                 });
                 response.Msg = "Succsess";
                 response.Code = 0;

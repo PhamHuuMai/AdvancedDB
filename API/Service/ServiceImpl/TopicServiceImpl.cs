@@ -6,6 +6,7 @@ using System.Web;
 using API.DTO;
 using DatabaseEnginer.DB;
 using System.Collections;
+using API.Constant;
 
 namespace API.Service.ServiceImpl
 {
@@ -15,16 +16,16 @@ namespace API.Service.ServiceImpl
         public List<TopicDTO> getClassTopicCurent(int idCn)
         {
             var query = from dt in qldt.DeTais
-                        where (dt.IDChuyenNganh == idCn && dt.Status == true)
+                        where (dt.TrangThai.Equals(TopicStatus.APPROVE) && dt.Status == true)// && dt.IDChuyenNganh == idCn
                         select new TopicDTO
                         {
                             DoKho = dt.DoKho.Value,
-                            IdGV=dt.IDGVDeXuat.Value,
-                            IdDeTai=dt.ID,
-                            MoTa=dt.MoTa,
-                            NoiDung=dt.NoiDung,
-                            TenDT=dt.TenDeTai,
-                            TenGV=dt.GiaoVien.HoTen
+                            IdGV = dt.IDGVDeXuat.Value,
+                            IdDeTai = dt.ID,
+                            MoTa = dt.MoTa,
+                            NoiDung = dt.NoiDung,
+                            TenDT = dt.TenDeTai,
+                            TenGV = dt.GiaoVien.HoTen
                         };
             return query == null ? new List<TopicDTO>() : query.ToList();
         }
@@ -45,7 +46,7 @@ namespace API.Service.ServiceImpl
                                 MoTa = l.DeTai.MoTa,
                                 NoiDung = l.DeTai.NoiDung,
                                 DoKho = l.DeTai.DoKho.Value
-                            }; 
+                            };
                 return query.First();
             }
             catch
@@ -54,7 +55,7 @@ namespace API.Service.ServiceImpl
             }
         }
 
-        public void registerTopic(int idSv,int idDt)
+        public void registerTopic(int idSv, int idDt)
         {
             //SinhVienDangKyDeTai temp = qldt.SinhVienDangKyDeTais.SingleOrDefault(x => (x.IDLopHD == idLopHd && x.IDSinhVien == idLopHd));
             var curent = qldt.SinhVienDangKyDeTais.Where(x => x.IDSinhVien == idSv && x.TrangThai == 1);
@@ -96,7 +97,7 @@ namespace API.Service.ServiceImpl
                             LanBaoCao = i.LanBaoCao.Value,
                             NgayBaoCao = i.NgayBaoCao.Value,
                             NoiDung = i.NoiDung,
-                            TrangThai = i.TrangThai==null?0: i.TrangThai.Value
+                            TrangThai = i.TrangThai == null ? 0 : i.TrangThai.Value
                         };
             if (query != null)
             {
@@ -105,7 +106,7 @@ namespace API.Service.ServiceImpl
             return new List<ReportDTO>();
         }
 
-        public void addReport(int idSv,int idDk,String content,String file) 
+        public void addReport(int idSv, int idDk, String content, String file)
         {
             var count = qldt.BaoCaoTienDoes.Count(x => x.IDSVDKDT == idDk);
             var query = qldt.SinhVienDangKyDeTais.Where(x => x.ID == idDk);
@@ -119,7 +120,7 @@ namespace API.Service.ServiceImpl
                     NoiDung = content,
                     IDSinhVien = idSv,
                     NgayBaoCao = DateTime.Now,
-                    IDDeTai= query.First().IDDeTai
+                    IDDeTai = query.First().IDDeTai
                 });
                 qldt.SaveChanges();
             }
@@ -144,7 +145,7 @@ namespace API.Service.ServiceImpl
                 result.NoiDung = content;
                 result.File = file;
                 result.NgayBaoCao = DateTime.Now;
-                qldt.SaveChanges();  
+                qldt.SaveChanges();
             }
         }
 
@@ -196,7 +197,7 @@ namespace API.Service.ServiceImpl
             dt.NoiDung = detai.NoiDung;
             dt.DoKho = detai.DoKho;
             dt.NgayTao = DateTime.Now;
-            dt.TrangThai = "0";
+            dt.TrangThai = TopicStatus.PENDING;
             dt.Status = true;
             qldt.DeTais.Add(dt);
             qldt.SaveChanges();
@@ -205,7 +206,7 @@ namespace API.Service.ServiceImpl
         public void updateTopic(DeTai detai)
         {
             DeTai dt = qldt.DeTais.Find(detai.ID);
-            if(dt != null)
+            if (dt != null)
             {
                 dt.TenDeTai = detai.TenDeTai;
                 //dt.IDGVDeXuat = detai.IDGVDeXuat;
@@ -214,7 +215,7 @@ namespace API.Service.ServiceImpl
                 dt.NoiDung = detai.NoiDung;
                 dt.DoKho = detai.DoKho;
                 dt.NgayTao = DateTime.Now;
-                dt.TrangThai = "0";
+                dt.TrangThai = TopicStatus.PENDING;
             }
             qldt.SaveChanges();
         }
@@ -228,7 +229,12 @@ namespace API.Service.ServiceImpl
 
         public void changeStatusTopic(int idDetai, int status)
         {
-            throw new NotImplementedException();
+            DeTai dt = qldt.DeTais.Where(x => x.ID == idDetai).FirstOrDefault();
+            if (dt != null)
+            {
+                dt.TrangThai = status + "";
+            }
+            qldt.SaveChanges();
         }
     }
 }

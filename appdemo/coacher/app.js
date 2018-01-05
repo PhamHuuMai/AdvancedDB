@@ -19,7 +19,7 @@ app.config(function ($routeProvider) {
         });
 });
 app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, $http) {
-    $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
+    $http.defaults.headers.common.Authorization = $localStorage.session.Token;
     // $scope.tab = true;
     $scope.topics = [];
     // {      
@@ -35,7 +35,7 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
     // }
     var data;
     $scope.load = function () {
-        $http.get("http://localhost:50132/coacher/gettopic", {})
+        $http.get(host+"coacher/gettopic", {})
             .then(
             function success(response) {
                 if (response.data.Code == 0) {
@@ -70,7 +70,7 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
         // $scope.topicSelected = Object.assign({}, $scope.topics[index]);
         if ($scope.topicSelected.IdDeTai == null) {
             // create
-            $http.post("http://localhost:50132/coacher/addtopic", $scope.topicSelected)
+            $http.post(host+"coacher/addtopic", $scope.topicSelected)
                 .then(
                 function success(response) {
                     $scope.load();
@@ -80,7 +80,7 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
                 });
         } else {
             // update
-            $http.put("http://localhost:50132/coacher/updatetopic/" + $scope.topicSelected.IdDeTai, $scope.topicSelected)
+            $http.put(host+"coacher/updatetopic/" + $scope.topicSelected.IdDeTai, $scope.topicSelected)
                 .then(
                 function success(response) {
                     if (response.data.Code == 0) {
@@ -96,7 +96,7 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
     };
     $scope.delete = function () {
         // $scope.topicSelected = Object.assign({}, $scope.topics[index]);
-        $http.get("http://localhost:50132/coacher/gettopic", {})
+        $http.get(host+"coacher/gettopic", {})
             .then(
             function success(response) {
                 if (response.data.Code == 0) {
@@ -121,12 +121,12 @@ app.controller("managetopic", function ($scope, $localStorage, $sessionStorage, 
 
 });
 app.controller("manageproject", function ($scope, $localStorage, $sessionStorage, $http) {
-    $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
+    $http.defaults.headers.common.Authorization = $localStorage.session.Token;
     $scope.trainers = [];
     $scope.reports = [];
     var data;
     $scope.load = function () {
-        $http.get("http://localhost:50132/coacher/getstudentmanaged", {}
+        $http.get(host+"coacher/getstudentmanaged", {}
         ).then(
             function success(response) {
                 if (response.data.Code == 0)
@@ -151,7 +151,7 @@ app.controller("manageproject", function ($scope, $localStorage, $sessionStorage
     $scope.loadReport = function (index) {
         $scope.reports = [];
         var id = $scope.trainers[index].Id;
-        $http.get("http://localhost:50132/coacher/report/" + id, {})
+        $http.get(host+"coacher/report/" + id, {})
             .then(
             function success(response) {
                 if (response.data.Code == 0)
@@ -164,7 +164,7 @@ app.controller("manageproject", function ($scope, $localStorage, $sessionStorage
     $scope.save = function (index) {
         var id = $scope.reports[index].ID;
         if (!($scope.reports[index].KetQua == "" || $scope.reports[index].KetQua == null)) {
-            $http.post("http://localhost:50132/coacher/report",
+            $http.post(host+"coacher/report",
                 {
                     IdReport: id,
                     Point: $scope.reports[index].KetQua

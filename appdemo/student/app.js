@@ -13,6 +13,7 @@ app.config(function ($routeProvider) {
         });
 });
 app.controller("myCtrl", function ($scope, $localStorage, $sessionStorage, $http) {
+    $http.defaults.headers.common.Authorization = $localStorage.session.Token;
     $scope.selector = [];
     $scope.selected = [];
     $scope.handleTableUp = function (x, id) {
@@ -29,8 +30,7 @@ app.controller("myCtrl", function ($scope, $localStorage, $sessionStorage, $http
     };
     $scope.submit = function () {
         if ($scope.IdDt != null) {
-            $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-            $http.post("http://localhost:50132/student/register/" + $scope.IdDt, {})
+            $http.post(host + "student/register/" + $scope.IdDt, {})
                 .then(
                 function success(response) {
                     if (response.data.Code != 0) {
@@ -49,8 +49,8 @@ app.controller("myCtrl", function ($scope, $localStorage, $sessionStorage, $http
         // alert($sessionStorage.session.Token);
         // alert($localStorage.session.Token);
 
-        $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-        $http.get("http://localhost:50132/student/register", {})
+
+        $http.get(host + "student/register", {})
             .then(
             function success(response) {
                 var code = response.data.Code;
@@ -73,10 +73,10 @@ app.controller("myCtrl", function ($scope, $localStorage, $sessionStorage, $http
 
 });
 app.controller("report", function ($scope, $localStorage, $sessionStorage, $http) {
+    $http.defaults.headers.common.Authorization = $localStorage.session.Token;
     $scope.flag = 0;
     $scope.load = function () {
-        $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-        $http.get("http://localhost:50132/student/report", {})
+        $http.get(host + "student/report", {})
             .then(
             function success(response) {
                 if (response.data.Code == 0) {
@@ -94,7 +94,7 @@ app.controller("report", function ($scope, $localStorage, $sessionStorage, $http
         $scope.title = "Tạo báo cáo";
     };
     $scope.selectReport = function (index) {
-        $scope.title = "Sửa báo cáo";        
+        $scope.title = "Sửa báo cáo";
         $scope.flag = 2;
         $("#myModal").modal("show");
         $scope.reportSelected = $scope.reports[index];
@@ -102,8 +102,8 @@ app.controller("report", function ($scope, $localStorage, $sessionStorage, $http
         $scope.file = $scope.reportSelected.File;
     };
     $scope.save = function () {
-        $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-        $http.put("http://localhost:50132/student/report/" + $scope.reportSelected.ID,
+
+        $http.put(host + "student/report/" + $scope.reportSelected.ID,
             {
                 content: $scope.content,
                 file: $scope.file
@@ -122,8 +122,7 @@ app.controller("report", function ($scope, $localStorage, $sessionStorage, $http
             });
     };
     $scope.remove = function () {
-        $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-        $http.delete("http://localhost:50132/student/report/" + $scope.reportSelected.ID, {})
+        $http.delete(host + "student/report/" + $scope.reportSelected.ID, {})
             .then(
             function success(response) {
                 if (response.data.Code == 0) {
@@ -139,8 +138,7 @@ app.controller("report", function ($scope, $localStorage, $sessionStorage, $http
     };
     $scope.submitCreater = function () {
         $scope.flag = 1;
-        $http.defaults.headers.common.Authorization = $sessionStorage.session.Token;
-        $http.post("http://localhost:50132/student/report",
+        $http.post(host + "student/report",
             {
                 idDk: $scope.topicRegisted.Id,
                 content: $scope.content,

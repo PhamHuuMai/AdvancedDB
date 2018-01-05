@@ -14,7 +14,7 @@ loginapp.controller("login", function ($scope, $localStorage, $sessionStorage, $
     $scope.alertTitle = 'Loading................................ ';
     // login 
     $scope.login = function () {
-        $http.post("http://localhost:50132/login", {
+        $http.post(host+"login", {
             userName: $scope.username,
             password: $scope.password
         }

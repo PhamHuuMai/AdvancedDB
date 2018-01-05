@@ -1,17 +1,17 @@
-<div ng-controller="managetopic" ng-init="">
+<div ng-controller="managetopic" ng-init="load()">
     <ul class="list-group">
         <li class="list-group-item list-group-item-danger">Lọc theo :</li>
         <li class="list-group-item list-group-item-info">
             <label>Khoa:</label>
             <span>
-                <select class="form-control" style="width: 300px">
+                <select class="form-control" style="width: 300px" ng-model="khoa" ng-change="seach()">
                     <option ng-repeat="x in faculties" value="{{x.MaKhoa}}">{{x.TenKhoa}}</option>
                 </select>
             </span>
         </li>
     </ul>
     <!--  content tab  -->
-    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+    <div style="min-height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
         <div>
             <table class="table">
                 <thead>
@@ -37,12 +37,18 @@
                         <td> {{x.MoTa}}</td>
                         <td> {{x.DoKho}}</td>
                         <td> {{x.TenGV}} </td>
-                        <td> {{x.TrangThai}} </td>
+                        <td >
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default {{appBtn(x.TrangThai)}}" ng-click="changeStatus(x.IdDeTai,1)">Approve</button>
+                                <button type="button" class="btn btn-default {{penBtn(x.TrangThai)}}" ng-click="changeStatus(x.IdDeTai,0)">Pending</button>
+                                <button type="button" class="btn btn-default {{denBtn(x.TrangThai)}}" ng-click="changeStatus(x.IdDeTai,-1)">Deny</button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-   
+
 </div>

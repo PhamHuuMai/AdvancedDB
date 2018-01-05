@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using API.DTO;
+using API.ResponseDTO;
 
 namespace API.Service.ServiceImpl
 {
@@ -11,6 +12,19 @@ namespace API.Service.ServiceImpl
     {
 
         QLDT qldt = new QLDT();
+
+        public List<CoacherDTO> getCoacherByFal(int idKhoa)
+        {
+            var query = from gv in qldt.GiaoViens
+                        where gv.IDKhoa == idKhoa
+                        select new CoacherDTO {
+                            Id = gv.ID,
+                            Ten = gv.HoTen,
+                            HocHam = gv.HocHam,
+                            HocVi = gv.HocVi
+                        };
+            return query.ToList();
+        }
 
         public List<TopicRegisterDTO> getCurentTopicRegisterByGV(int idGv)
         {

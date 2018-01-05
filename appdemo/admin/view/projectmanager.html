@@ -1,46 +1,42 @@
-<div ng-controller="manageproject">
+<div ng-controller="protect" ng-init="load()">
     <ul class="nav nav-tabs">
-        <li>
-            <a data-toggle="tab" ng-click="show=fasle">Lịch sử </a>
-        </li>
         <li class="active">
-            <a data-toggle="tab" ng-click="show=true">Các hội đồng bảo vệ hiện tại </a>
+            <a data-toggle="tab" ng-click="show=true">Hội đồng bảo vệ </a>
         </li>
     </ul>
     <!--  content tab  -->
-    <div style="height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
+    <div style="min-height: 400px; background-color: antiquewhite; margin-bottom : 5px; margin-top : 5px;">
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th> Mã HD </th>
                     <th> Tên HD </th>
+                    <th> Mã Khoa </th>
                     <th> Khoa </th>
                     <th> Ngày thành lập </th>
                     <th> Năm học </th>
-                    <th> Trạng thái </th>
                     <th> # </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="x in hd">
                     <td>
                         <input ng-show="show" type="checkbox" name="" id="" value="{{x.IdDeTai}}">
                     </td>
-                    <td>scs </td>
-                    <td>cxcxczcc </td>
-                    <td>zxczcca </td>
-                    <td>xzcasxcc </td>
-                    <td>acdscscc </td>
-                    <td>fwefsdc </td>
+                    <td>{{x.Id}} </td>
+                    <td>{{x.TenHd}} </td>
+                    <td>{{x.IdKhoa}} </td>
+                    <td>{{x.TenKhoa}} </td>
+                    <td>{{x.NgayTL}} </td>
                     <td>
-                        <a ng-click="" data-toggle="modal" data-target="#myModal">Chi tiết</a>
+                        <a ng-click="detail($index)" data-toggle="modal" data-target="#myModal">Chi tiết</a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button type="button" data-toggle="modal" data-target="#myModal" style="margin: 2px " class="btn btn-default">Tạo HD</button>
+    <button type="button" ng-click="precreate()" data-toggle="modal" data-target="#myModal" style="margin: 2px " class="btn btn-default">Tạo HD</button>
     <!-- HD detail -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -52,11 +48,40 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-sm-12" style="background-color: azure">
-                        <label></label>
+                        <label>Hội đồng bảo vệ</label>
+                        <!-- infor -->
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">ID:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="hdInfor.Id" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Tên HD:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="hdInfor.TenHd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Khoa:</label>
+                                <div class="col-sm-10" >
+                                    <select class="form-control" style="width: 300px" ng-value="hdInfor.IdKhoa" ng-model="hdInfor.IdKhoa" ng-disabled="ahihi" ng-click="clk()">
+                                        <option ng-repeat="x in faculties" value="{{x.MaKhoa}}">{{x.TenKhoa}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Ngày TL:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="hdInfor.NgayTL" disabled>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- detail  -->
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th> Mã GV </th>
                                     <th> Tên GV </th>
                                     <th> Vị trí </th>
@@ -64,21 +89,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="x in hdDetail">
+                                    <td> {{x.IdGV}}</td>
+                                    <td> {{x.TenGV}} </td>
+                                    <td> {{x.ViTri}} </td>
                                     <td>
-                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
-                                    </td>
-                                    <td> {{x.IdDeTai}}</td>
-                                    <td> {{x.TenDT}} </td>
-                                    <td> {{x.NoiDung}} </td>
-                                    <td>
-                                        <a>Xóa</a>
+                                        <a ng-click="delete($index)">Xóa</a>
                                     </td>
                                 </tr>
                             </tbody>
-                        </table> 
+                        </table>
                     </div>
-                    <button type="button" style="margin: 2px " class="btn btn-default" ng-click="add=!add">Thêm</button>
+                    <button type="button" style="margin: 2px " class="btn btn-default" ng-click="list()">Thêm</button>
                     <div class="col-sm-12" style="background-color: silver" ng-show="add">
                         <table class="table">
                             <thead>
@@ -91,23 +113,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-click="add=false">
+                                <tr ng-repeat="x in coachers">
                                     <td>
-                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
+                                        <input type="checkbox" ng-click="push($index)">
                                     </td>
-                                    <td> {{x.IdDeTai}}</td>
-                                    <td> {{x.TenDT}} </td>
-                                    <td> {{x.NoiDung}} </td>
-                                    <td> {{x.MoTa}}</td>
-                                </tr>
-                                <tr ng-click="add=false">
-                                    <td>
-                                        <input type="checkbox" ng-hide="me" data-toggle="modal" data-target="#myModal" ng-click="preupdate($index,x.IdDeTai)">
-                                    </td>
-                                    <td> {{x.IdDeTai}}</td>
-                                    <td> {{x.TenDT}} </td>
-                                    <td> {{x.NoiDung}} </td>
-                                    <td> {{x.MoTa}}</td>
+                                    <td> {{x.Id}}</td>
+                                    <td> {{x.Ten}} </td>
+                                    <td> {{x.HocHam}} </td>
+                                    <td> {{x.HocVi}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -115,7 +128,7 @@
                 </div>
                 <div class="modal-footer btn-group">
                     <button type="button" class="btn btn-default" ng-click="submit()">Ghi nhận</button>
-                    <button type="button" class="btn btn-default" ng-click="delete()">Xóa HĐ</button>
+                    <button type="button" class="btn btn-default" ng-click="delete1()" ng-show="deleteBtn">Xóa HĐ</button>
                 </div>
             </div>
         </div>

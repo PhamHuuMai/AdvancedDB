@@ -11,6 +11,7 @@ namespace API.Service
     interface ProtectProjectService
     {
         List<HDInforDTO> getAllHD();
+        List<KhoaDTO> getKhoas();
         HDInforDTO getInfoHD(int id);
         List<HDDetailDTO> getDetailHD(int id);
         void add(HoiDong hd,List<HoiDongGiaoVien> dhGv);

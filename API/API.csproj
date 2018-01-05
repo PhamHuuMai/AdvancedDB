@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constant\Constant.cs" />
+    <Compile Include="Constant\TopicStatus.cs" />
     <Compile Include="Constant\UserType.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ProjectManageController.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DTO\HDDetailDTO.cs" />
     <Compile Include="DTO\HDInforDTO.cs" />
+    <Compile Include="DTO\KhoaDTO.cs" />
     <Compile Include="DTO\ReportDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\StudentInforDTO.cs" />
@@ -174,14 +176,19 @@
     <Compile Include="Models\TokenData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestDTO\HDDetailDTO.cs" />
+    <Compile Include="RequestDTO\HdRequest.cs" />
+    <Compile Include="RequestDTO\HdDTO.cs" />
     <Compile Include="RequestDTO\MarkPointRequest.cs" />
     <Compile Include="RequestDTO\TopicRequest.cs" />
     <Compile Include="RequestDTO\UpdateReportRequest.cs" />
     <Compile Include="RequestDTO\CreateReportRequest.cs" />
     <Compile Include="RequestDTO\LoginRequest.cs" />
     <Compile Include="RequestDTO\RequestBase.cs" />
+    <Compile Include="ResponseDTO\CoacherDTO.cs" />
     <Compile Include="ResponseDTO\GetProjectManage.cs" />
     <Compile Include="ResponseDTO\GetTopicCoacherResponse.cs" />
+    <Compile Include="ResponseDTO\HDDetailResponse.cs" />
     <Compile Include="ResponseDTO\LoginResponse.cs" />
     <Compile Include="ResponseDTO\RegisterTopicResponse.cs" />
     <Compile Include="ResponseDTO\ReportTopicResponse.cs" />

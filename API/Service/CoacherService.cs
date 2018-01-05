@@ -1,4 +1,6 @@
 ﻿using API.DTO;
+using API.ResponseDTO;
+using DatabaseEnginer.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,8 @@ namespace API.Service
         List<TopicRegisterDTO> getOldTopicRegisterByGV(int idGv);
 
         List<TopicRegisterDTO> getCurentTopicRegisterByGV(int idGv);
+
+        List<CoacherDTO> getCoacherByFal(int idKhoa);
 
     }
 
