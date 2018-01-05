@@ -1,4 +1,5 @@
-﻿using DatabaseEnginer.DB;
+﻿using API.DTO;
+using DatabaseEnginer.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,11 @@ namespace API.Service
 {
     interface ProtectProjectService
     {
-        void getAllHD();
-        void getInfoHD(int id);
-        void getDetailHD(int id);
+        List<HDInforDTO> getAllHD();
+        HDInforDTO getInfoHD(int id);
+        List<HDDetailDTO> getDetailHD(int id);
         void add(HoiDong hd,List<HoiDongGiaoVien> dhGv);
         void update(HoiDong hd, List<HoiDongGiaoVien> dhGv);
-        void delete(int idHd);
-         
+        void delete(int idHd);   
     }
 }

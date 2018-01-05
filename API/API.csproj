@@ -161,6 +161,8 @@
     <Compile Include="Controllers\LottezyController.cs" />
     <Compile Include="Controllers\RegisterTopicController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DTO\HDDetailDTO.cs" />
+    <Compile Include="DTO\HDInforDTO.cs" />
     <Compile Include="DTO\ReportDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\StudentInforDTO.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="ResponseDTO\ReportTopicResponse.cs" />
     <Compile Include="ResponseDTO\Response.cs" />
     <Compile Include="Service\CoacherService.cs" />
+    <Compile Include="Service\ProtectProjectService.cs" />
     <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\ServiceImpl\CoacherServiceImpl.cs" />
     <Compile Include="Service\ServiceImpl\ReportServiceImpl.cs" />
